@@ -1,4 +1,4 @@
-var MyApp = function() {
+let MyApp = function() {
     let self = this,
         max = 100,
         min = 4,        
@@ -12,7 +12,7 @@ var MyApp = function() {
             return document.getElementById(params);
         },
 
-        printing= function(inpVal) {
+        printing = function(inpVal) {
             if (typeof print !== null) {
                 print.textContent = "Number of cells: " + inpVal.value * inpVal.value;
             }
@@ -30,7 +30,7 @@ var MyApp = function() {
             }
         },
 
-        draw= function() {
+        draw = function() {
             let inputVal = self.getId("num").value;
             if (inputVal < min || inputVal > max) {
                 alert(`Please enter a number between ${min} and ${max}, or you are going to get this annoying alert notification :)`);
@@ -43,30 +43,24 @@ var MyApp = function() {
                 for (i = 0; i < inputVal; i++) {
                     let newCol = document.createElement('div');
                     newCol.classList.add("column");
-                    for (j = 0; j < inputVal; j++) {
-                        newSpan = document.createElement('span');
-                        newSpan.innerText = i;
+                    for (j = 0; j < inputVal; j++) {                        
                         newDiv = document.createElement('div');
-                        newDiv.appendChild(newSpan);    
                         newCol.appendChild(newDiv);               
                     }
                     fragment.appendChild(newCol);
-                }
+                }            
                
-                // MyApp.get('resets').disabled = false;
-                // MyApp.get('colourises').disabled = false;
-                // MyApp.get('draws').disabled = true;
                 forCells.appendChild(fragment);
                 checkingBtn();
             }
         },       
 
-        getColor=  function() {
+        getColor =  function() {
             var r = function () { return Math.floor(Math.random()*256) };
             return "rgb(" + r() + "," + r() + "," + r() + ")";
         },
 
-        colourise=  function() {
+        colourise =  function() {
             let toColour =  document.querySelectorAll('.column > div'); 
             for (let i = 0; i < toColour.length; i++) {
                     setTimeout(function() {
@@ -76,7 +70,7 @@ var MyApp = function() {
         }
         },
 
-        reset=  function() {
+        reset =  function() {
             print.textContent = "";
             while (forCells.firstChild) {
                 forCells.removeChild(forCells.firstChild);
